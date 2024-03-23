@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  background-color: #000;
+  color: #fff;
+}
+
+#load-bg {
+  background: linear-gradient(0deg, #fdd7ef 0%, #fe9994 60%)
+}
+
+.line-bg {
+  background-repeat: repeat-x;
+  background-position: left top;
+  background-size: contain;
+}
+
+.a-down {
+  transform: translateY(200px);
+  opacity: 0;
+}
+
+.a-up {
+  transform: translateY(0px);
+  opacity: 1;
+}
