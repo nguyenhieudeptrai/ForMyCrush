@@ -2,12 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from 'framer-motion';
 import { Heart } from "./Heart";
 
-const audio = new Audio("/img/bg.mp3");
+const audio = new Audio(window.location.href + "img/bg.mp3");
 
 function App() {
 
   const [status, setStatus] = useState("LOADDING");
-  const [isNhi, hadNhi] = useState(null);
   const [breakHeart, setBreakHeart] = useState(false);
 
   useEffect(() => {
@@ -52,13 +51,14 @@ function App() {
   const onReset = () => {
     localStorage.removeItem("THIS_IS_MY_CRUSH");
     setStatus("VERIFY");
-    audio.pause();
     audio.currentTime = 0;
-    audio.play();
+    if(audio.paused){
+      audio.play();
+    }
   }
   if (breakHeart) {
-    return (<div className="min-h-screen w-screen relative flex overflow-hidden items-center justify-center bg-black">
-      <img src="/img/t10.png" alt=""
+    return (<div className="min-h-screen w-screen relative flex flex-wrap overflow-hidden items-center justify-center bg-black">
+      <img src={window.location.href + "img/t10.png"} alt=""
         className="h-40" />
       <motion.p
         initial={{ width: 0 }}
@@ -69,6 +69,14 @@ function App() {
       </motion.p>
     </div>)
   }
+  if (window.innerWidth < 800) {
+    return (<div className="min-h-screen w-screen relative flex overflow-hidden items-center justify-center bg-black">
+      <img src={window.location.href + "img/t11.png"} alt=""
+        className="h-40 m-2" />
+      Hãy mở trang web này ở trên Laptop hoặc chế độ máy tính trên điện thoại bằng Chrome!
+    </div>)
+  }
+
 
   return (
     <div className="min-h-screen w-screen relative flex">
@@ -132,7 +140,7 @@ const Loading = ({ onDone }) => {
   }
 
   const loadImage = (filename) => new Promise((r) => {
-    let link = "/img/" + filename;
+    let link = window.location.href + "img/" + filename;
     let img = new Image();
     img.onload = () => {
       r(link);
@@ -161,7 +169,7 @@ const Loading = ({ onDone }) => {
             <Heart className={"absolute top-0 right-0 h-16 translate-x-1/2"} imgs={currentHeart.current} />
           }
           <div className="w-full border-4 rounded-lg border-black/60 h-20 relative flex items-center px-2">
-            <div className="line-bg h-5/6 rounded-md transition-all duration-500" style={{ backgroundImage: "url('/img/line.png')", width: t + "%" }} />
+            <div className="line-bg h-5/6 rounded-md transition-all duration-500" style={{ backgroundImage: `url('${window.location.href}img/line.png')`, width: t + "%" }} />
           </div>
           {t < 100 &&
             <motion.p className="text-black text-5xl leading-[4rem] font-bold mt-6 text-center"
@@ -207,13 +215,13 @@ const Verify = ({ accept, normalAccept, notHer }) => {
         <p className="font-custom text-black text-6xl mb-16 text-center font-semibold">Bạn có phải là <span className="text-violet-500">Đặng Nhi</span>?</p>
         <div className="flex flex-col items-center relative mb-16">
           <div className="h-48 relative  hover:scale-[4] transition-transform z-20">
-            <motion.img src="/img/dang-nhi.jpg" alt=""
+            <motion.img src={window.location.href + "img/dang-nhi.jpg"} alt=""
               className="h-full object-contain rounded-lg border-4 border-rose-500"
               initial={{ x: -400, y: 40, opacity: 0, scale: 1, rotate: -100 }}
               animate={{ x: [-200, 0, 0, 0], y: 0, opacity: [0, 1, 1], scale: [1, 1.8, 2.1, 2.1, 2.1, 1.4, 1], rotate: [-100, 0, 0, -10], transition: { duration: 1.2, easings: ["backInOut"] } }}
 
             />
-            <motion.img src="/img/point.png" alt=""
+            <motion.img src={window.location.href + "img/point.png"} alt=""
               className="h-30 object-contain absolute top-9 left-3/4"
               initial={{ x: 60, opacity: 0, rotate: 60 }}
               animate={{ x: 0, opacity: 1, rotate: 0, transition: { delay: 1.5 } }}
@@ -278,7 +286,7 @@ const Verify = ({ accept, normalAccept, notHer }) => {
 }
 
 const DangNhi = ({ onDone, isMormal, notAccept, }) => {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(24);
   const [mode, setMode] = useState(false);
   const [deg, setDeg] = useState(0);
   const timeline = [
@@ -301,7 +309,7 @@ const DangNhi = ({ onDone, isMormal, notAccept, }) => {
     [2, "Muốn gặp em nữa...", null, false],
     [3, "Chỉ sợ em không thích thôi...", null, false],
     [3, "Nhưng anh muốn hỏi emmmm...", null, false],
-    [2, "Có phải chỉ có anh crush em thui hem...\nHay em cũng thích anh?????", "t6", 5, "text-[0.3rem]"],
+    [2, "Có phải chỉ có anh crush em thui hem...\nHay em cũng thích anh?????", "t6", 5, "text-[0.2rem]"],
     [2, "Mừng gheeeeeeeeeeeeeeeeeeee!", null, false],
     [2, "Mừng gheeeeeeeeeeeeeeeeeeee x2!", "t3", false],
     [2, "Chính em!", null, false],
@@ -309,15 +317,15 @@ const DangNhi = ({ onDone, isMormal, notAccept, }) => {
     [2, null, "t5", false],
     [2, "Lặp lại phải không?", null, 2],
     [2, "Chính em!", null, false],
-    [4, "Đặng Nguyễn Tuyết Nhi", null, false, "text-[6rem] animate-ping"],
-    [3, "👍😍❤️💖💕💕💕", null, false, "text-[6rem]"],
+    [4, "Đặng Nguyễn Tuyết Nhi", null, false, "text-[5rem] animate-ping"],
+    [3, "👍😍❤️💖💕💕💕", null, false, "text-[6rem] leading-[1.5]"],
     [2, "Lặp lại 1 lần nữa?", null, 2],
     [2, "我喜欢你", null, false, "text-[6rem]"],
     [2, "Lặp thêm 1 lần lại nữa?", null, 2],
     [4, "私はあなたが好きです", null, false, "text-[6rem]"],
     [2, "Nhi-san", null, false, "text-[6rem]"],
     [2, "Thôi nhé", null, 3],
-    [2, "Thank for reading! Like you 😘🥰...\n\nQ & A", null, 4, "text-[5rem] text-black font-sans"],
+    [2, "Thank for reading! Like you 😘🥰...\n\nQ & A", null, 4, "text-[5rem] text-black font-sans leading-[1.5]"],
   ]
 
   useEffect(() => {
@@ -379,8 +387,8 @@ const DangNhi = ({ onDone, isMormal, notAccept, }) => {
             <p className={timeline[index][4] + " whitespace-pre-wrap animate-none absolute top-0 w-full"}>{timeline[index][1]}</p>
           </>}
           {timeline[index][2] && <>
-            <img src={"/img/" + timeline[index][2] + ".png"} alt=""
-              className="h-80 object-contain mx-auto mt-8"
+            <img src={window.location.href + "img/" + timeline[index][2] + ".png"} alt=""
+              className="h-60 object-contain mx-auto mt-8"
             />
           </>}
         </div>
@@ -393,10 +401,10 @@ const DangNhi = ({ onDone, isMormal, notAccept, }) => {
           </motion.button>
         }
         {timeline[index][3] == 2 &&
-          <div className="flex items-center w-[1010px] relative mt-12">
+          <div className="flex items-center w-[1010px] max-w-[100vw] mx-8 relative mt-12">
             <div id="notButton" className="absolute left-0 top-0 transition-all" >
               <motion.button
-                className="group p-10 cursor-pointer relative border-0 flex items-center justify-center bg-transparent text-black h-auto w-[400px] overflow-hidden transition-all duration-100 text-4xl font-semibold font-sans"
+                className="group p-10 cursor-pointer relative border-0 flex items-center justify-center bg-transparent text-black h-auto w-[300px] overflow-hidden transition-all duration-100 text-4xl font-semibold font-sans"
                 onClick={() => movePosition()}
                 onMouseOver={() => movePosition()}
               >
@@ -413,7 +421,7 @@ const DangNhi = ({ onDone, isMormal, notAccept, }) => {
             </div>
             <div className="absolute right-0 top-0">
               <motion.button
-                className="group p-10 cursor-pointer relative border-0 flex items-center justify-center bg-transparent text-purple-600 overflow-hidden w-[400px] transition-all duration-100 text-4xl font-semibold font-sans"
+                className="group p-10 cursor-pointer relative border-0 flex items-center justify-center bg-transparent text-purple-600 overflow-hidden w-[300px] transition-all duration-100 text-4xl font-semibold font-sans"
                 onClick={() => setIndex(index + 1)}
               >
                 <span className="group-hover:w-full absolute left-0 h-full w-5 border-y-4 border-l-4 border-purple-600 transition-all duration-500" />
@@ -430,10 +438,10 @@ const DangNhi = ({ onDone, isMormal, notAccept, }) => {
           </div>
         }
         {timeline[index][3] == 3 &&
-          <div className="flex items-center w-[1010px] relative mt-12">
+          <div className="flex items-center w-[800px] max-w-[100vw] mx-8 relative mt-12">
             <div className="absolute left-0 top-0 transition-all" >
               <motion.button
-                className="group p-10 cursor-pointer relative border-0 flex items-center justify-center bg-transparent text-black h-auto w-[400px] overflow-hidden transition-all duration-100 text-4xl font-semibold font-sans"
+                className="group p-10 cursor-pointer relative border-0 flex items-center justify-center bg-transparent text-black h-auto w-[300px] overflow-hidden transition-all duration-100 text-4xl font-semibold font-sans"
                 onClick={() => setIndex(timeline.length - 1)}
               >
                 <span className="group-hover:w-full absolute left-0 h-full w-5 border-y-4 border-l-4 border-black transition-all duration-500" />
@@ -449,7 +457,7 @@ const DangNhi = ({ onDone, isMormal, notAccept, }) => {
             </div>
             <div className="absolute right-0 top-0">
               <motion.button
-                className="group p-10 cursor-pointer relative border-0 flex items-center justify-center bg-transparent text-purple-600 overflow-hidden w-[400px] transition-all duration-100 text-4xl font-semibold font-sans"
+                className="group p-10 cursor-pointer relative border-0 flex items-center justify-center bg-transparent text-purple-600 overflow-hidden w-[300px] transition-all duration-100 text-4xl font-semibold font-sans"
                 onClick={() => setIndex(1)}
               >
                 <span className="group-hover:w-full absolute left-0 h-full w-5 border-y-4 border-l-4 border-purple-600 transition-all duration-500" />
