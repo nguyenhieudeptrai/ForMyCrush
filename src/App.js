@@ -65,7 +65,7 @@ function App() {
         animate={{ width: 250, }}
         className="whitespace-nowrap overflow-hidden"
       >
-        Hãy nhắn cho anh biết điều này
+        Hãy chụp với màn hình này rồi gửi anh và không cần làm gì cả nhé
       </motion.p>
     </div>)
   }
@@ -300,6 +300,7 @@ const DangNhi = ({ onDone, isMormal, notAccept, }) => {
     [2, "Nhưng chắc là em không biết", null, false],
     [2, null, "t4", false],
     [2, "Trước lúc đó...", null, false],
+    [3, "Đang định rẽ phải thì phải lòng em...", null, false],
     [3, "Anh đã ngại ngùng, mà cũng hơi sợ...", "t9", false],
     [3, "Sợ em sa lánh lun thì \"hết cíu\"...", "t8", false],
     [3, "Nhưng mà đến lúc bắt đầu nói chuyện...", null, false],
@@ -318,6 +319,7 @@ const DangNhi = ({ onDone, isMormal, notAccept, }) => {
     [2, "Đặng Nguyễn Tuyết Nhi", null, 1, "text-[3rem]"],
     [2, null, "t5", false],
     [2, "Lặp lại phải không?", null, 2],
+    [2, null, "t12", false],
     [2, "Chính em!", null, false],
     [4, "Đặng Nguyễn Tuyết Nhi", null, false, "text-[5rem] animate-ping"],
     [3, "👍😍❤️💖💕💕💕", null, false, "text-[6rem] leading-[1.5]"],
