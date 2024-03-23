@@ -52,7 +52,7 @@ function App() {
     localStorage.removeItem("THIS_IS_MY_CRUSH");
     setStatus("VERIFY");
     audio.currentTime = 0;
-    if(audio.paused){
+    if (audio.paused) {
       audio.play();
     }
   }
@@ -286,22 +286,23 @@ const Verify = ({ accept, normalAccept, notHer }) => {
 }
 
 const DangNhi = ({ onDone, isMormal, notAccept, }) => {
-  const [index, setIndex] = useState(24);
+  const [index, setIndex] = useState(0);
   const [mode, setMode] = useState(false);
   const [deg, setDeg] = useState(0);
   const timeline = [
     [2, isMormal ? "Helloooo, anh chỉ hỏi vậy thui." : "Anh biết ngay là em mà!!!", null, false,],
     [2, "My \"công chúa\"", null, false],
     [2, "Đây là trang web dành riêng cho em", null, false],
-    [2, "First-time I see you", null, false],
+    [2, "First time I saw you", null, false],
     [2, null, "t2", false],
     [2, "I had crush you..............! 😍😍", null, false],
     [2, null, "t1", false],
     [2, "Nhưng chắc là em không biết", null, false],
     [2, null, "t4", false],
     [2, "Trước lúc đó...", null, false],
-    [3, "Anh hơi ngại, mà cũng hơi sợ...", "t9", false],
-    [3, "Khi mà đến lúc bắt đầu nói chuyện...", null, false],
+    [3, "Anh đã ngại ngùng, mà cũng hơi sợ...", "t9", false],
+    [3, "Sợ em sa lánh lun thì \"hết cíu\"...", null, false],
+    [3, "Nhưng mà đến lúc bắt đầu nói chuyện...", null, false],
     [3, "Anh muốn thử nói chuyện nhiều hơn", null, false],
     [3, "Mãi đến khi có một 'gợi ý'", null, false],
     [2, null, "t11", false],
@@ -384,7 +385,7 @@ const DangNhi = ({ onDone, isMormal, notAccept, }) => {
         <div className={"relative text-4xl text-center font-black font-main transition-all duration-300 " + (mode ? "a-up" : "a-down")} >
           {timeline[index][1] && <>
             <p className={timeline[index][4] + " whitespace-pre-wrap"}>{timeline[index][1]}</p>
-            <p className={timeline[index][4] + " whitespace-pre-wrap animate-none absolute top-0 w-full"}>{timeline[index][1]}</p>
+            <p className={(timeline[index][4] + "").replaceAll("animate", "") + " whitespace-pre-wrap absolute top-0 w-full"}>{timeline[index][1]}</p>
           </>}
           {timeline[index][2] && <>
             <img src={window.location.href + "img/" + timeline[index][2] + ".png"} alt=""
