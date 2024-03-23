@@ -323,9 +323,11 @@ const DangNhi = ({ onDone, isMormal, notAccept, }) => {
     [3, "👍😍❤️💖💕💕💕", null, false, "text-[6rem] leading-[1.5]"],
     [2, "Lặp lại 1 lần nữa?", null, 2],
     [2, "我喜欢你", null, false, "text-[6rem]"],
+    [4, "Không cần em hiểu đâu...\nMiễn là em vui là được!", null, false],
     [2, "Lặp thêm 1 lần lại nữa?", null, 2],
     [4, "私はあなたが好きです", null, false, "text-[6rem]"],
     [2, "Nhi-san", null, false, "text-[6rem]"],
+    [4, "Vẫn là không cần em hiểu đâu...\nMiễn là em vui là được!", null, false],
     [2, "Thôi nhé", null, 3],
     [2, "Thank for reading! Like you 😘🥰...\n\nQ & A", null, 4, "text-[5rem] text-black font-sans leading-[1.5]"],
   ]
