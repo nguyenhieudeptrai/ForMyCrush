@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/ForMyCrush/static/css/main.b527e9c7.css",
-    "main.js": "/ForMyCrush/static/js/main.8564f233.js",
+    "main.css": "/ForMyCrush/static/css/main.25424e10.css",
+    "main.js": "/ForMyCrush/static/js/main.6ce2a613.js",
     "index.html": "/ForMyCrush/index.html",
-    "main.b527e9c7.css.map": "/ForMyCrush/static/css/main.b527e9c7.css.map",
-    "main.8564f233.js.map": "/ForMyCrush/static/js/main.8564f233.js.map"
+    "main.25424e10.css.map": "/ForMyCrush/static/css/main.25424e10.css.map",
+    "main.6ce2a613.js.map": "/ForMyCrush/static/js/main.6ce2a613.js.map"
   },
   "entrypoints": [
-    "static/css/main.b527e9c7.css",
-    "static/js/main.8564f233.js"
+    "static/css/main.25424e10.css",
+    "static/js/main.6ce2a613.js"
   ]
 }
